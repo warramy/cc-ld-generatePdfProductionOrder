@@ -105,6 +105,10 @@ exports.handler = async (event, context) => {
     }
 
     const response = {
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*"
+        },
         statusCode: 200,
         body: JSON.stringify(responsePDF),
     };
@@ -151,6 +155,10 @@ function doResponse(context, statusCode, err) {
         message: err.message || 'error'
     }
     const response = {
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*"
+        },
         statusCode: statusCode,
         body: JSON.stringify(newError)
     }
