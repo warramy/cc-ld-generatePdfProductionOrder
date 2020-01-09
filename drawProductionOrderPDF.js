@@ -418,10 +418,12 @@ function generateProductionOrderTable(doc, data) {
             productionQuantity = data[i].quantity >= 0 ? data[i].quantity : productionQuantity
         } else {
             productionQuantity = data[i].quantity >= 0 ? data[i].quantity : productionQuantity
-            if (data[i].expiredDate != '') {
+            if (data[i].expiredDate != null && data[i].expiredDate != '') {
                 const dateTimeStamp = Date.parse(data[i].expiredDate);
                 const d = new Date(dateTimeStamp);
                 expireDate = d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear()
+            }else{
+                expireDate = '-'
             }
 
         }

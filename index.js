@@ -65,6 +65,12 @@ exports.handler = async (event, context) => {
             throw { message: 'moNumber not found.' }
         }
 
+        const { statusCode } = productionOrderRes.rows[0]
+
+        if (statusCode != 'ISS') {
+            throw { message: 'cannot get pdf production order' }
+        }
+
         // Get production_order_item by user's warehouse and moNumber
         console.log("query production_order_item by moNumber");
         const paramsProductionOrderItem = queryProductionOrderItemWithMoNumber(moNumber)
